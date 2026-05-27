@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡️ CyberSecurity & Programming Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --success: #48bb78;
+            --danger: #f56565;
+            --warning: #ed8936;
+            --dark: #2d3748;
+            --light: #f7fafc;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-size: 1em;
+            color: var(--dark);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .nav-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            padding: 50px 20px;
+            min-height: calc(100vh - 400px);
+        }
+
+        section {
+            display: none;
+        }
+
+        section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--dark);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-left: 4px solid var(--primary);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .level {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .level.beginner {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .level.intermediate {
+            background-color: var(--warning);
+            color: white;
+        }
+
+        .level.advanced {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .duration {
+            color: #718096;
+            font-size: 0.95em;
+        }
+
+        .card-description {
+            color: #718096;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .topic-tag {
+            background-color: var(--light);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--light);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9em;
+            flex: none;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+
+        .close-btn {
+            float: right;
+            font-size: 2em;
+            cursor: pointer;
+            color: var(--dark);
+            background: none;
+            border: none;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--danger);
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .modal-body h3 {
+            color: var(--primary);
+            margin: 15px 0 10px 0;
+        }
+
+        .modal-body ol, .modal-body ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body li {
+            margin-bottom: 8px;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        /* Progress */
+        .progress-bar {
+            background: var(--border);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        /* User Profile */
+        .user-profile {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .user-info h3 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Code Editor */
+        .code-editor {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .code-editor pre {
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .nav-btn {
+                padding: 12px 20px;
+                border-bottom: none;
+                border-right: 3px solid transparent;
+            }
+
+            .nav-btn.active {
+                border-right-color: var(--primary);
+            }
+
+            .user-profile {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .stats {
+                width: 100%;
+                justify-content: space-around;
+            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1.2em;
+            color: var(--primary);
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            background-color: #c6f6d5;
+            color: #22543d;
+            border-left: 4px solid var(--success);
+        }
+
+        .alert-error {
+            background-color: #fed7d7;
+            color: #742a2a;
+            border-left: 4px solid var(--danger);
+        }
+
+        .alert-info {
+            background-color: #bee3f8;
+            color: #2c5282;
+            border-left: 4px solid var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>🛡️ CyberSecurity & Programming Academy</h1>
+            <p>Учитесь программированию и кибербезопасности с нуля до профессионала</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <button class="nav-btn active" onclick="showSection('dashboard')">📊 Панель</button>
+            <button class="nav-btn" onclick="showSection('courses')">📚 Курсы</button>
+            <button class="nav-btn" onclick="showSection('tasks')">🎯 Задачи</button>
+            <button class="nav-btn" onclick="showSection('projects')">🚀 Проекты</button>
+            <button class="nav-btn" onclick="showSection('profile')">👤 Профиль</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="active">
+            <div class="user-profile">
+                <div class="user-info">
+                    <h3>Добро пожаловать, Студент! 👋</h3>
+                    <p>Начните свой путь в кибербезопасность</p>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Курсов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">23</div>
+                        <div class="stat-label">Задач</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">850</div>
+                        <div class="stat-label">Очков</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>🎓 Мои Курсы</h2>
+            <div class="grid" id="dashboard-courses"></div>
+
+            <h2>📈 Рекомендуемое</h2>
+            <div class="grid" id="dashboard-recommended"></div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses">
+            <h2>📚 Все Курсы</h2>
+            <div class="grid" id="courses-grid"></div>
+        </section>
+
+        <!-- Tasks Section -->
+        <section id="tasks">
+            <h2>🎯 Практические Задачи</h2>
+            <div class="grid" id="tasks-grid"></div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>🚀 Капстоунные Проекты</h2>
+            <div class="grid" id="projects-grid"></div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile">
+            <h2>👤 Мой Профиль</h2>
+            <div id="profile-content"></div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <h2 id="modal-title"></h2>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="startLesson()">Начать Обучение</button>
+                <button class="btn btn-secondary" onclick="closeModal()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 CyberSecurity & Programming Academy. Все права защищены.</p>
+        <p>📧 support@cybersecurity-academy.com | 🐦 <a href="#">@CyberAcademy</a></p>
+    </footer>
+
+    <script>
+        // Data
+        const courses = [
+            {
+                id: 1,
+                title: 'Python Основы',
+                description: 'Изучите основы программирования на Python с нуля',
+                level: 'beginner',
+                duration: 4,
+                topics: ['Переменные', 'Типы данных', 'Циклы', 'Функции'],
+                progress: 60
+            },
+            {
+                id: 2,
+                title: 'Web Безопасность',
+                description: 'Основы защиты веб-приложений',
+                level: 'beginner',
+                duration: 6,
+                topics: ['OWASP Top 10', 'SQL Injection', 'XSS', 'CSRF'],
+                progress: 30
+            },
+            {
+                id: 3,
+                title: 'Продвинутый Python',
+                description: 'ООП, асинхронность, работа с БД',
+                level: 'intermediate',
+                duration: 5,
+                topics: ['ООП', 'Наследование', 'Design Patterns', 'Async'],
+                progress: 45
+            },
+            {
+                id: 4,
+                title: 'Криптография',
+                description: 'Шифрование, хеширование, подписи',
+                level: 'intermediate',
+                duration: 5,
+                topics: ['AES', 'RSA', 'Хеширование', 'Цифровые подписи'],
+                progress: 0
+            },
+            {
+                id: 5,
+                title: 'Linux Безопасность',
+                description: 'Защита серверов и систем',
+                level: 'advanced',
+                duration: 6,
+                topics: ['Firewall', 'SSH', 'SELinux', 'Audit'],
+                progress: 0
+            }
+        ];
+
+        const tasks = [
+            {
+                id: 1,
+                title: 'Hello World',
+                description: 'Напишите программу, которая выводит "Hello, World!"',
+                level: 'easy',
+                points: 10,
+                difficulty: 'easy'
+            },
+            {
+                id: 2,
+                title: 'Простой Калькулятор',
+                description: 'Создайте функцию для сложения двух чисел',
+                level: 'easy',
+                points: 15,
+                difficulty: 'easy'
+            },
+            {
+                id: 3,
+                title: 'Валидация Пароля',
+                description: 'Создайте функцию для проверки надёжности пароля',
+                level: 'medium',
+                points: 25,
+                difficulty: 'medium'
+            },
+            {
+                id: 4,
+                title: 'SQL Injection Prevention',
+                description: 'Напишите защищённый SQL запрос',
+                level: 'hard',
+                points: 40,
+                difficulty: 'hard'
+            },
+            {
+                id: 5,
+                title: 'Шифрование AES',
+                description: 'Реализуйте шифрование AES-256',
+                level: 'hard',
+                points: 50,
+                difficulty: 'hard'
+            }
+        ];
+
+        const projects = [
+            {
+                id: 1,
+                title: 'Порт-Сканер',
+                description: 'Создайте многопоточный сканер портов',
+                technologies: ['Python', 'Sockets', 'Threading'],
+                difficulty: 'intermediate'
+            },
+            {
+                id: 2,
+                title: 'Инструмент Шифрования',
+                description: 'Создайте программу шифрования/дешифрования',
+                technologies: ['Python', 'Cryptography', 'CLI'],
+                difficulty: 'intermediate'
+            },
+            {
+                id: 3,
+                title: 'Сканер Уязвимостей',
+                description: 'Создайте инструмент для поиска уязвимостей веб-приложений',
+                technologies: ['Python', 'Requests', 'BeautifulSoup'],
+                difficulty: 'advanced'
+            },
+            {
+                id: 4,
+                title: 'Защищённое Чат-Приложение',
+                description: 'Создайте защищённое чат-приложение с шифрованием',
+                technologies: ['Python', 'Sockets', 'Cryptography'],
+                difficulty: 'advanced'
+            }
+        ];
+
+        // Functions
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+
+            // Load data
+            if (sectionId === 'courses') loadCourses();
+            if (sectionId === 'tasks') loadTasks();
+            if (sectionId === 'projects') loadProjects();
+            if (sectionId === 'dashboard') loadDashboard();
+            if (sectionId === 'profile') loadProfile();
+        }
+
+        function loadDashboard() {
+            const dashboardCourses = document.getElementById('dashboard-courses');
+            const recommended = document.getElementById('dashboard-recommended');
+            
+            dashboardCourses.innerHTML = courses.slice(0, 3).map(course => createCourseCard(course)).join('');
+            recommended.innerHTML = courses.slice(3).map(course => createCourseCard(course)).join('');
+        }
+
+        function loadCourses() {
+            const grid = document.getElementById('courses-grid');
+            grid.innerHTML = courses.map(course => createCourseCard(course)).join('');
+        }
+
+        function loadTasks() {
+            const grid = document.getElementById('tasks-grid');
+            grid.innerHTML = tasks.map(task => createTaskCard(task)).join('');
+        }
+
+        function loadProjects() {
+            const grid = document.getElementById('projects-grid');
+            grid.innerHTML = projects.map(project => createProjectCard(project)).join('');
+        }
+
+        function loadProfile() {
+            const content = document.getElementById('profile-content');
+            content.innerHTML = `
+                <div class="card" style="border: none; border-top: 4px solid var(--primary);">
+                    <h3>🧑‍💼 Информация об Аккаунте</h3>
+                    <div style="margin-top: 20px;">
+                        <p><strong>Имя:</strong> Студент 1</p>
+                        <p><strong>Email:</strong> student@example.com</p>
+                        <p><strong>Уровень:</strong> Промежуточный</p>
+                        <p><strong>Дата присоединения:</strong> 1 января 2024</p>
+                        <p><strong>Всего очков:</strong> 850</p>
+                    </div>
+                </div>
+
+                <div class="card" style="border: none; border-top: 4px solid var(--success); margin-top: 30px;">
+                    <h3>🏆 Достижения</h3>
+                    <div style="margin-top: 20px;">
+                        <p>✅ Первый Курс - Завершили курс Python Основы</p>
+                        <p>✅ Первая Задача - Решили первую задачу</p>
+                        <p>✅ Гурман Задач - Решили 10 задач</p>
+                        <p>✅ Безопасник - Завершили Web Security курс</p>
+                    </div>
+                </div>
+
+                <div class="card" style="border: none; border-top: 4px solid var(--warning); margin-top: 30px;">
+                    <h3>📊 Статистика</h3>
+                    <div style="margin-top: 20px;">
+                        <p><strong>Курсов пройдено:</strong> 2 из 5</p>
+                        <p><strong>Задач решено:</strong> 8 из 23</p>
+                        <p><strong>Проектов завершено:</strong> 1 из 4</p>
+                        <p><strong>Время обучения:</strong> 45 часов</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createCourseCard(course) {
+            return `
+                <div class="card">
+                    <h3>${course.title}</h3>
+                    <div class="card-meta">
+                        <span class="level ${course.level}">${course.level === 'beginner' ? 'Начинающий' : course.level === 'intermediate' ? 'Промежуточный' : 'Продвинутый'}</span>
+                        <span class="duration">⏱️ ${course.duration} недель</span>
+                    </div>
+                    <p class="card-description">${course.description}</p>
+                    <div class="topics">
+                        ${course.topics.map(topic => `<span class="topic-tag">${topic}</span>`).join('')}
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${course.progress}%"></div>
+                    </div>
+                    <p style="font-size: 0.9em; color: #718096; margin-top: 8px;">Прогресс: ${course.progress}%</p>
+                    <div class="card-footer" style="margin-top: 15px;">
+                        <button class="btn btn-primary btn-small" onclick="openCourseModal('${course.title}', '${course.description}')">Подробнее</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createTaskCard(task) {
+            return `
+                <div class="card">
+                    <h3>${task.title}</h3>
+                    <div class="card-meta">
+                        <span class="level ${task.difficulty}">${task.difficulty === 'easy' ? 'Лёгкая' : task.difficulty === 'medium' ? 'Средняя' : 'Сложная'}</span>
+                        <span style="color: var(--warning); font-weight: bold;">+${task.points} очков</span>
+                    </div>
+                    <p class="card-description">${task.description}</p>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-small" onclick="startTask('${task.title}')">Решить</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createProjectCard(project) {
+            return `
+                <div class="card">
+                    <h3>${project.title}</h3>
+                    <p class="card-description">${project.description}</p>
+                    <div class="topics" style="margin-bottom: 15px;">
+                        ${project.technologies.map(tech => `<span class="topic-tag">${tech}</span>`).join('')}
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-small" onclick="startProject('${project.title}')">Начать</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function openCourseModal(title, description) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-body').innerHTML = `
+                <h3>Описание курса</h3>
+                <p>${description}</p>
+                <h3>Что вы научитесь</h3>
+                <ul>
+                    <li>Основным концепциям и теории</li>
+                    <li>Практическим навыкам и техникам</li>
+                    <li>Решению реальных проблем</li>
+                    <li>Лучшим практикам индустрии</li>
+                </ul>
+                <h3>Структура курса</h3>
+                <ol>
+                    <li>Вводные видео лекции</li>
+                    <li>Практические примеры кода</li>
+                    <li>Интерактивные задачи</li>
+                    <li>Финальный проект</li>
+                    <li>Сертификат об окончании</li>
+                </ol>
+            `;
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        function startLesson() {
+            showAlert('✅ Урок начат! Откройте консоль браузера (F12) для просмотра кода.', 'success');
+            closeModal();
+        }
+
+        function startTask(taskTitle) {
+            showAlert(`🎯 Задача "${taskTitle}" открыта! Используйте консоль браузера (F12 → Console) для кодирования.`, 'info');
+        }
+
+        function startProject(projectTitle) {
+            showAlert(`🚀 Проект "${projectTitle}" начат! Это комплексный проект для практики всех знаний.`, 'info');
+        }
+
+        function showAlert(message, type = 'info') {
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alert.style.position = 'fixed';
+            alert.style.top = '80px';
+            alert.style.right = '20px';
+            alert.style.zIndex = '999';
+            alert.style.minWidth = '300px';
+            document.body.appendChild(alert);
+            setTimeout(() => alert.remove(), 5000);
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', loadDashboard);
+    </script>
+</body>
+</html>
