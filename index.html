@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Академия программирования и кибербезопасности</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🔐 Академия ПК</div>
+            <ul class="nav-links">
+                <li><a href="#home" onclick="showSection('home')">Главная</a></li>
+                <li><a href="#courses" onclick="showSection('courses')">Курсы</a></li>
+                <li><a href="#tasks" onclick="showSection('tasks')">Задачи</a></li>
+                <li><a href="#progress" onclick="showSection('progress')">Прогресс</a></li>
+                <li><a href="#about" onclick="showSection('about')">О нас</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Главная страница -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Добро пожаловать в Академию!</h1>
+                <p>Научитесь программированию и кибербезопасности с нуля</p>
+                <button class="btn btn-primary" onclick="showSection('courses')">Начать обучение</button>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/500x400?text=Кибербезопасность" alt="Кибербезопасность">
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📚</div>
+                <h3>Структурированные курсы</h3>
+                <p>От основ до продвинутого уровня</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💻</div>
+                <h3>Практические задачи</h3>
+                <p>Реальные примеры и упражнения</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Отслеживание прогресса</h3>
+                <p>Видите свой прогресс в реальном времени</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎓</div>
+                <h3>Сертификаты</h3>
+                <p>Получайте сертификаты после прохождения курсов</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция курсов -->
+    <section id="courses" class="section">
+        <div class="container">
+            <h2>Доступные курсы</h2>
+            <div class="courses-grid" id="coursesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Секция задач -->
+    <section id="tasks" class="section">
+        <div class="container">
+            <h2>Практические задачи</h2>
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterTasks('all')">Все</button>
+                <button class="filter-btn" onclick="filterTasks('easy')">Легко</button>
+                <button class="filter-btn" onclick="filterTasks('medium')">Средне</button>
+                <button class="filter-btn" onclick="filterTasks('hard')">Сложно</button>
+            </div>
+            <div class="tasks-list" id="tasksList"></div>
+        </div>
+    </section>
+
+    <!-- Секция прогресса -->
+    <section id="progress" class="section">
+        <div class="container">
+            <h2>Ваш прогресс</h2>
+            <div class="progress-container">
+                <div class="progress-item">
+                    <h3>Завершённые курсы</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%"></div>
+                    </div>
+                    <p id="completedCourses">0/10 курсов</p>
+                </div>
+                <div class="progress-item">
+                    <h3>Решённые задачи</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                    <p id="completedTasks">0/20 задач</p>
+                </div>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">42</div>
+                        <div class="stat-label">Часов обучения</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Решённых задач</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Полученных сертификатов</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "О нас" -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>О Академии</h2>
+            <div class="about-content">
+                <p>Академия программирования и кибербезопасности - это платформа для обучения современным технологиям безопасности информации и разработки программного обеспечения.</p>
+                <h3>Наши направления:</h3>
+                <ul class="directions-list">
+                    <li>✓ Основы программирования (Python, JavaScript, Java)</li>
+                    <li>✓ Веб-разработка (HTML, CSS, React, Node.js)</li>
+                    <li>✓ Кибербезопасность (этичный хакинг, защита данных)</li>
+                    <li>✓ Базы данных (SQL, MongoDB)</li>
+                    <li>✓ Облачные технологии (AWS, Azure)</li>
+                    <li>✓ DevOps и контейнеризация (Docker, Kubernetes)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Академия программирования и кибербезопасности. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
