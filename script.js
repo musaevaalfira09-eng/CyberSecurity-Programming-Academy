@@ -2,93 +2,57 @@
 const courses = [
     {
         id: 1,
-        name: "Python для начинающих",
-        level: "Начинающий",
-        description: "Научитесь основам программирования на Python",
-        duration: "4 недели",
+        title: 'Основы кибербезопасности',
+        level: 'Начинающий',
+        description: 'Изучите базовые концепции защиты информации и сетевой безопасности.',
+        duration: '4 недели',
         lessons: 12,
-        image: "🐍"
+        students: 245
     },
     {
         id: 2,
-        name: "JavaScript и веб-разработка",
-        level: "Средний",
-        description: "Создавайте интерактивные веб-приложения",
-        duration: "6 недель",
-        lessons: 18,
-        image: "⚡"
+        title: 'Защита систем видеонаблюдения',
+        level: 'Средний',
+        description: 'Узнайте о защите камер, видеорегистраторов и облачных хранилищ видео.',
+        duration: '5 недель',
+        lessons: 15,
+        students: 189
     },
     {
         id: 3,
-        name: "HTML и CSS основы",
-        level: "Начинающий",
-        description: "Основы создания веб-страниц",
-        duration: "2 недели",
-        lessons: 8,
-        image: "🎨"
+        title: 'Этичный хакинг',
+        level: 'Продвинутый',
+        description: 'Освойте методы тестирования на проникновение и уязвимостей систем.',
+        duration: '6 недель',
+        lessons: 18,
+        students: 156
     },
     {
         id: 4,
-        name: "Введение в кибербезопасность",
-        level: "Средний",
-        description: "Защита данных и информационная безопасность",
-        duration: "8 недель",
-        lessons: 20,
-        image: "🔐"
+        title: 'Криптография и шифрование',
+        level: 'Средний',
+        description: 'Разберитесь в алгоритмах шифрования и защиты данных.',
+        duration: '4 недели',
+        lessons: 10,
+        students: 178
     },
     {
         id: 5,
-        name: "SQL и базы данных",
-        level: "Средний",
-        description: "Работа с реляционными базами данных",
-        duration: "5 недель",
-        lessons: 15,
-        image: "🗄️"
+        title: 'Аудит безопасности сетей',
+        level: 'Продвинутый',
+        description: 'Научитесь проводить комплексную проверку сетевой инфраструктуры.',
+        duration: '5 недель',
+        lessons: 16,
+        students: 134
     },
     {
         id: 6,
-        name: "React.js продвинутый",
-        level: "Продвинутый",
-        description: "Создание современных веб-приложений",
-        duration: "7 недель",
-        lessons: 25,
-        image: "⚛️"
-    },
-    {
-        id: 7,
-        name: "Docker и контейнеризация",
-        level: "Продвинутый",
-        description: "Развёртывание приложений в контейнерах",
-        duration: "4 недели",
-        lessons: 12,
-        image: "🐳"
-    },
-    {
-        id: 8,
-        name: "Этичный хакинг",
-        level: "Продвинутый",
-        description: "Тестирование безопасности и пентесты",
-        duration: "10 недель",
-        lessons: 30,
-        image: "🎯"
-    },
-    {
-        id: 9,
-        name: "Node.js бэкэнд-разработка",
-        level: "Средний",
-        description: "Создание серверной части приложений",
-        duration: "6 недель",
-        lessons: 18,
-        image: "🚀"
-    },
-    {
-        id: 10,
-        name: "AWS облачные технологии",
-        level: "Продвинутый",
-        description: "Развёртывание в облаке AWS",
-        duration: "8 недель",
-        lessons: 24,
-        image: "☁️"
+        title: 'Безопасность облачных систем',
+        level: 'Средний',
+        description: 'Изучите защиту данных в облачных сервисах и платформах.',
+        duration: '4 недели',
+        lessons: 11,
+        students: 201
     }
 ];
 
@@ -96,240 +60,226 @@ const courses = [
 const tasks = [
     {
         id: 1,
-        title: "Вычисление факториала",
-        difficulty: "easy",
-        course: "Python для начинающих",
-        description: "Напишите функцию для вычисления факториала числа",
-        points: 10
+        title: 'Настройка брандмауэра для видеокамер',
+        difficulty: 'easy',
+        description: 'Настроить правила брандмауэра для безопасной работы системы видеонаблюдения.',
+        points: 50,
+        course: 'Защита систем видеонаблюдения'
     },
     {
         id: 2,
-        title: "Манипуляция строками",
-        difficulty: "easy",
-        course: "Python для начинающих",
-        description: "Работа со строками и основные операции",
-        points: 15
+        title: 'Создание безопасного пароля для видеорегистратора',
+        difficulty: 'easy',
+        description: 'Разработать и установить стойкий пароль с требуемыми параметрами безопасности.',
+        points: 30,
+        course: 'Основы кибербезопасности'
     },
     {
         id: 3,
-        title: "DOM и события в JavaScript",
-        difficulty: "medium",
-        course: "JavaScript и веб-разработка",
-        description: "Манипуляция DOM элементами и обработка событий",
-        points: 20
+        title: 'Анализ трафика сети видеонаблюдения',
+        difficulty: 'medium',
+        description: 'Использовать Wireshark для анализа трафика камер видеонаблюдения.',
+        points: 100,
+        course: 'Защита систем видеонаблюдения'
     },
     {
         id: 4,
-        title: "Создание макета в CSS",
-        difficulty: "easy",
-        course: "HTML и CSS основы",
-        description: "Верстка адаптивного макета с использованием Flexbox",
-        points: 15
+        title: 'Обнаружение попыток несанкционированного доступа',
+        difficulty: 'medium',
+        description: 'Определить и заблокировать попытки несанкционированного доступа к системе.',
+        points: 80,
+        course: 'Аудит безопасности сетей'
     },
     {
         id: 5,
-        title: "SQL запросы JOIN",
-        difficulty: "medium",
-        course: "SQL и базы данных",
-        description: "Выполнение JOIN запросов для связанных таблиц",
-        points: 25
+        title: 'Тестирование уязвимостей на проникновение',
+        difficulty: 'hard',
+        description: 'Провести полный тест безопасности системы видеонаблюдения на наличие уязвимостей.',
+        points: 150,
+        course: 'Этичный хакинг'
     },
     {
         id: 6,
-        title: "Асинхронное программирование",
-        difficulty: "medium",
-        course: "JavaScript и веб-разработка",
-        description: "Работа с Promise и async/await",
-        points: 30
+        title: 'Шифрование видеопотока',
+        difficulty: 'hard',
+        description: 'Реализовать шифрование видеопередачи с использованием HTTPS и TLS.',
+        points: 200,
+        course: 'Криптография и шифрование'
     },
     {
         id: 7,
-        title: "Компоненты React",
-        difficulty: "hard",
-        course: "React.js продвинутый",
-        description: "Создание переиспользуемых компонентов React",
-        points: 40
+        title: 'Настройка двухфакторной аутентификации',
+        difficulty: 'medium',
+        description: 'Внедрить 2FA для доступа к системе видеонаблюдения.',
+        points: 75,
+        course: 'Основы кибербезопасности'
     },
     {
         id: 8,
-        title: "Docker Dockerfile",
-        difficulty: "hard",
-        course: "Docker и контейнеризация",
-        description: "Создание и оптимизация Docker образов",
-        points: 45
-    },
-    {
-        id: 9,
-        title: "SQL инъекции",
-        difficulty: "hard",
-        course: "Введение в кибербезопасность",
-        description: "Понимание и предотвращение SQL инъекций",
-        points: 50
-    },
-    {
-        id: 10,
-        title: "REST API на Node.js",
-        difficulty: "medium",
-        course: "Node.js бэкэнд-разработка",
-        description: "Создание RESTful API с Express.js",
-        points: 35
-    },
-    {
-        id: 11,
-        title: "Списки и циклы в Python",
-        difficulty: "easy",
-        course: "Python для начинающих",
-        description: "Работа со списками и итерация данных",
-        points: 12
-    },
-    {
-        id: 12,
-        title: "Скрапинг веб-сайтов",
-        difficulty: "medium",
-        course: "Python для начинающих",
-        description: "Парсинг HTML и извлечение данных",
-        points: 28
-    },
-    {
-        id: 13,
-        title: "AWS Lambda функции",
-        difficulty: "hard",
-        course: "AWS облачные технологии",
-        description: "Развёртывание бессерверных функций",
-        points: 48
-    },
-    {
-        id: 14,
-        title: "HTTPS и SSL сертификаты",
-        difficulty: "medium",
-        course: "Введение в кибербезопасность",
-        description: "Безопасная передача данных через HTTPS",
-        points: 32
-    },
-    {
-        id: 15,
-        title: "Шифрование данных",
-        difficulty: "hard",
-        course: "Введение в кибербезопасность",
-        description: "Изучение алгоритмов шифрования",
-        points: 55
+        title: 'Аудит облачного хранилища видео',
+        difficulty: 'hard',
+        description: 'Проверить безопасность облачного хранилища видеоархива.',
+        points: 180,
+        course: 'Безопасность облачных систем'
     }
 ];
 
-let currentFilter = 'all';
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    renderCourses();
+    renderTasks('all');
+    updateProgress();
+});
 
-// Показать секцию
+// Переключение между секциями
 function showSection(sectionId) {
-    // Скрыть все секции
     const sections = document.querySelectorAll('.section');
-    sections.forEach(section => section.classList.remove('active'));
-    
-    // Показать выбранную секцию
-    const section = document.getElementById(sectionId);
-    if (section) {
-        section.classList.add('active');
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
+
+    const selectedSection = document.getElementById(sectionId);
+    if (selectedSection) {
+        selectedSection.classList.add('active');
         window.scrollTo(0, 0);
     }
-    
-    // Загрузить контент
-    if (sectionId === 'courses') {
-        renderCourses();
-    } else if (sectionId === 'tasks') {
-        renderTasks();
-    }
 }
 
-// Отрендерить курсы
+// Отображение курсов
 function renderCourses() {
     const coursesGrid = document.getElementById('coursesGrid');
-    coursesGrid.innerHTML = courses.map(course => `
-        <div class="course-card">
-            <div class="course-header">${course.image} ${course.name}</div>
-            <div class="course-body">
+    coursesGrid.innerHTML = '';
+
+    courses.forEach(course => {
+        const courseCard = document.createElement('div');
+        courseCard.className = 'course-card';
+        courseCard.innerHTML = `
+            <div class="course-header">
+                <h3>${course.title}</h3>
                 <span class="course-level">${course.level}</span>
+            </div>
+            <div class="course-body">
                 <p>${course.description}</p>
                 <div class="course-stats">
-                    <span>⏱️ ${course.duration}</span>
-                    <span>📚 ${course.lessons} уроков</span>
+                    <div class="course-stat">
+                        <div class="course-stat-number">${course.lessons}</div>
+                        <div class="course-stat-label">Уроков</div>
+                    </div>
+                    <div class="course-stat">
+                        <div class="course-stat-number">${course.duration}</div>
+                        <div class="course-stat-label">Длительность</div>
+                    </div>
+                    <div class="course-stat">
+                        <div class="course-stat-number">${course.students}</div>
+                        <div class="course-stat-label">Студентов</div>
+                    </div>
                 </div>
-                <button class="btn btn-primary" onclick="enrollCourse(${course.id})">Записаться</button>
+                <div class="course-footer">
+                    <button class="btn btn-primary" onclick="enrollCourse(${course.id})">Записаться</button>
+                    <button class="btn btn-secondary" onclick="viewCourseDetails(${course.id})">Подробнее</button>
+                </div>
             </div>
-        </div>
-    `).join('');
+        `;
+        coursesGrid.appendChild(courseCard);
+    });
 }
 
-// Отрендерить задачи
-function renderTasks() {
+// Отображение задач с фильтром
+function renderTasks(difficulty = 'all') {
     const tasksList = document.getElementById('tasksList');
-    
+    tasksList.innerHTML = '';
+
     let filteredTasks = tasks;
-    if (currentFilter !== 'all') {
-        filteredTasks = tasks.filter(task => task.difficulty === currentFilter);
+    if (difficulty !== 'all') {
+        filteredTasks = tasks.filter(task => task.difficulty === difficulty);
     }
-    
+
     if (filteredTasks.length === 0) {
-        tasksList.innerHTML = '<p style="text-align: center; grid-column: 1/-1;">Задачи не найдены</p>';
+        tasksList.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #94a3b8;">Задачи не найдены</p>';
         return;
     }
-    
-    tasksList.innerHTML = filteredTasks.map(task => `
-        <div class="task-card ${task.difficulty}">
+
+    filteredTasks.forEach(task => {
+        const taskCard = document.createElement('div');
+        taskCard.className = 'task-card';
+        
+        const difficultyClass = `difficulty-${task.difficulty}`;
+        const difficultyLabel = {
+            'easy': 'Легко',
+            'medium': 'Средне',
+            'hard': 'Сложно'
+        }[task.difficulty];
+
+        taskCard.innerHTML = `
             <div class="task-header">
-                <h3>${task.title}</h3>
-                <span class="task-difficulty ${task.difficulty}">
-                    ${getDifficultyLabel(task.difficulty)}
-                </span>
+                <div class="task-title">${task.title}</div>
+                <span class="task-difficulty ${difficultyClass}">${difficultyLabel}</span>
             </div>
             <p class="task-description">${task.description}</p>
-            <div class="task-footer">
-                <span style="color: #666;">Курс: ${task.course}</span>
-                <span class="task-points">${task.points} очков</span>
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background: #f1f5f9; border-radius: 0.5rem;">
+                <small style="color: #64748b;"><strong>Курс:</strong> ${task.course}</small>
             </div>
-            <button class="btn btn-primary" style="margin-top: 1rem;" onclick="solveTask(${task.id})">Решить задачу</button>
-        </div>
-    `).join('');
-}
-
-// Получить название сложности
-function getDifficultyLabel(difficulty) {
-    const labels = {
-        'easy': 'Легко',
-        'medium': 'Средне',
-        'hard': 'Сложно'
-    };
-    return labels[difficulty] || difficulty;
-}
-
-// Фильтровать задачи
-function filterTasks(difficulty) {
-    currentFilter = difficulty;
-    
-    // Обновить активную кнопку
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
+            <div class="task-footer">
+                <span class="task-score">💰 ${task.points} баллов</span>
+                <button class="btn btn-primary" onclick="completeTask(${task.id})">Начать решать</button>
+            </div>
+        `;
+        tasksList.appendChild(taskCard);
     });
-    event.target.classList.add('active');
-    
-    renderTasks();
 }
 
-// Записаться на курс
+// Фильтр задач
+function filterTasks(difficulty) {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    renderTasks(difficulty);
+}
+
+// Обновление прогресса
+function updateProgress() {
+    const completedCourses = document.getElementById('completedCourses');
+    const completedTasks = document.getElementById('completedTasks');
+    
+    if (completedCourses) {
+        completedCourses.textContent = '4/10 курсов';
+    }
+    if (completedTasks) {
+        completedTasks.textContent = '12/20 задач';
+    }
+}
+
+// Функции действий
 function enrollCourse(courseId) {
     const course = courses.find(c => c.id === courseId);
     if (course) {
-        alert(`✅ Вы успешно записались на курс "${course.name}"!`);
+        alert(`✅ Вы успешно записались на курс "${course.title}"!\n\nВы получите письмо с подтверждением на вашу почту.`);
     }
 }
 
-// Решить задачу
-function solveTask(taskId) {
+function viewCourseDetails(courseId) {
+    const course = courses.find(c => c.id === courseId);
+    if (course) {
+        alert(`📚 Курс: ${course.title}\n\nУровень: ${course.level}\nДлительность: ${course.duration}\nУроков: ${course.lessons}\nСтудентов: ${course.students}\n\n${course.description}`);
+    }
+}
+
+function completeTask(taskId) {
     const task = tasks.find(t => t.id === taskId);
     if (task) {
-        alert(`📝 Вы открыли задачу: "${task.title}"\n\nЭто ${getDifficultyLabel(task.difficulty)} задача на ${task.points} очков`);
+        alert(`🚀 Задача: ${task.title}\n\nСложность: ${task.difficulty}\nБаллы: ${task.points}\n\n${task.description}\n\nРедактор кода открывается в отдельной вкладке...`);
     }
 }
 
-// Инициализация при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-    showSection('home');
+function startCourse(courseId) {
+    showSection('courses');
+    enrollCourse(courseId);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = this.getAttribute('href').slice(1);
+        showSection(target);
+    });
 });

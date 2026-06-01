@@ -5,20 +5,21 @@
 }
 
 :root {
-    --primary-color: #1e40af;
-    --secondary-color: #dc2626;
-    --success-color: #16a34a;
-    --warning-color: #ea580c;
-    --text-color: #1f2937;
-    --light-bg: #f3f4f6;
-    --border-color: #e5e7eb;
-    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --primary-color: #1e3a8a;
+    --secondary-color: #2563eb;
+    --accent-color: #3b82f6;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --light-bg: #f8fafc;
+    --dark-text: #1e293b;
+    --light-text: #94a3b8;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-color);
-    background-color: #ffffff;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
     line-height: 1.6;
 }
 
@@ -28,15 +29,14 @@ body {
     padding: 0 20px;
 }
 
-/* Navbar */
+/* Навигация */
 .navbar {
-    background-color: var(--primary-color);
-    color: white;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: var(--shadow);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .container {
@@ -48,6 +48,7 @@ body {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
+    color: white;
 }
 
 .nav-links {
@@ -59,108 +60,122 @@ body {
 .nav-links a {
     color: white;
     text-decoration: none;
-    cursor: pointer;
+    font-weight: 500;
     transition: opacity 0.3s;
+    cursor: pointer;
 }
 
 .nav-links a:hover {
     opacity: 0.8;
 }
 
-/* Sections */
+/* Кнопки */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn-secondary {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    border: 2px solid var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Секции */
 .section {
     display: none;
     padding: 3rem 0;
-    min-height: 500px;
+    animation: fadeIn 0.3s ease-in;
 }
 
 .section.active {
     display: block;
 }
 
-.section h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--primary-color);
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Hero Section */
+/* Главная страница */
 .hero {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 3rem;
+    align-items: center;
     margin-bottom: 4rem;
+    background: white;
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-content p {
     font-size: 1.2rem;
+    color: var(--light-text);
     margin-bottom: 2rem;
-    color: #666;
 }
 
 .hero-image img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
+    width: 100%;
+    border-radius: 0.5rem;
 }
 
-/* Buttons */
-.btn {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #1e3a8a;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
-}
-
-.btn-secondary {
-    background-color: var(--secondary-color);
-    color: white;
-}
-
-.btn-secondary:hover {
-    background-color: #b91c1c;
-}
-
-/* Features */
+/* Особенности */
 .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 .feature {
-    background-color: var(--light-bg);
+    background: white;
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 0.5rem;
     text-align: center;
-    transition: transform 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .feature:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .feature-icon {
@@ -169,90 +184,126 @@ body {
 }
 
 .feature h3 {
-    color: var(--primary-color);
     margin-bottom: 0.5rem;
+    color: var(--primary-color);
 }
 
-/* Courses Grid */
+.feature p {
+    color: var(--light-text);
+}
+
+/* Курсы */
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
 .courses-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
 }
 
 .course-card {
     background: white;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
+    border-radius: 0.5rem;
     overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: all 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .course-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .course-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 2rem;
     color: white;
-    padding: 1.5rem;
-    font-size: 1.5rem;
+    text-align: center;
+}
+
+.course-header h3 {
+    margin-bottom: 0.5rem;
+}
+
+.course-level {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
 }
 
 .course-body {
     padding: 1.5rem;
 }
 
-.course-level {
-    display: inline-block;
-    background-color: var(--light-bg);
-    color: var(--primary-color);
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    margin-bottom: 0.5rem;
-}
-
 .course-body p {
-    color: #666;
+    color: var(--light-text);
     margin-bottom: 1rem;
 }
 
 .course-stats {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 1rem;
-    font-size: 0.9rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
 }
 
-.course-stats span {
-    color: #999;
+.course-stat {
+    text-align: center;
 }
 
-/* Tasks List */
+.course-stat-number {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.course-stat-label {
+    font-size: 0.8rem;
+    color: var(--light-text);
+}
+
+.course-footer {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.course-footer button {
+    flex: 1;
+}
+
+/* Задачи */
 .filters {
     display: flex;
     gap: 1rem;
     margin-bottom: 2rem;
-    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .filter-btn {
-    padding: 0.5rem 1.5rem;
-    border: 2px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--accent-color);
     background: white;
-    border-radius: 25px;
+    color: var(--primary-color);
+    border-radius: 0.5rem;
     cursor: pointer;
+    font-weight: 600;
     transition: all 0.3s;
 }
 
 .filter-btn.active {
-    background-color: var(--primary-color);
+    background: var(--accent-color);
     color: white;
-    border-color: var(--primary-color);
+}
+
+.filter-btn:hover {
+    background: var(--accent-color);
+    color: white;
 }
 
 .tasks-list {
@@ -262,65 +313,56 @@ body {
 
 .task-card {
     background: white;
-    border-left: 5px solid var(--primary-color);
     padding: 1.5rem;
-    border-radius: 5px;
-    box-shadow: var(--shadow);
-    transition: all 0.3s;
-}
-
-.task-card.easy {
-    border-left-color: var(--success-color);
-}
-
-.task-card.medium {
-    border-left-color: var(--warning-color);
-}
-
-.task-card.hard {
-    border-left-color: var(--secondary-color);
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .task-card:hover {
     transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .task-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     margin-bottom: 1rem;
 }
 
-.task-header h3 {
+.task-title {
+    font-size: 1.2rem;
+    font-weight: 600;
     color: var(--primary-color);
 }
 
 .task-difficulty {
     display: inline-block;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: bold;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 
-.task-difficulty.easy {
-    background-color: #dcfce7;
-    color: var(--success-color);
+.difficulty-easy {
+    background: #d1fae5;
+    color: #065f46;
 }
 
-.task-difficulty.medium {
-    background-color: #fed7aa;
-    color: var(--warning-color);
+.difficulty-medium {
+    background: #fef3c7;
+    color: #92400e;
 }
 
-.task-difficulty.hard {
-    background-color: #fee2e2;
-    color: var(--secondary-color);
+.difficulty-hard {
+    background: #fee2e2;
+    color: #991b1b;
 }
 
 .task-description {
-    color: #666;
+    color: var(--light-text);
     margin-bottom: 1rem;
 }
 
@@ -330,25 +372,21 @@ body {
     align-items: center;
 }
 
-.task-points {
-    background-color: var(--light-bg);
-    padding: 0.3rem 0.8rem;
-    border-radius: 5px;
-    font-weight: bold;
-    color: var(--primary-color);
+.task-score {
+    font-weight: 600;
+    color: var(--success-color);
 }
 
-/* Progress */
+/* Прогресс */
 .progress-container {
-    margin-top: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .progress-item {
-    background: white;
-    padding: 2rem;
     margin-bottom: 2rem;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
 }
 
 .progress-item h3 {
@@ -357,24 +395,23 @@ body {
 }
 
 .progress-bar {
+    width: 100%;
     height: 30px;
-    background-color: var(--light-bg);
-    border-radius: 15px;
+    background: #e2e8f0;
+    border-radius: 0.5rem;
     overflow: hidden;
     margin-bottom: 0.5rem;
 }
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary-color), var(--success-color));
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 10px;
-    color: white;
-    font-weight: bold;
+    background: linear-gradient(90deg, var(--accent-color), var(--success-color));
+    transition: width 0.5s ease;
+}
+
+.progress-item p {
+    color: var(--light-text);
     font-size: 0.9rem;
-    transition: width 0.5s;
 }
 
 .stats {
@@ -382,70 +419,78 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
 }
 
 .stat-card {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 2rem;
-    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
     text-align: center;
+    color: white;
 }
 
 .stat-number {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
 
 .stat-label {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
 }
 
-/* About */
+/* О нас */
 .about-content {
     background: white;
     padding: 2rem;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .about-content p {
-    font-size: 1.1rem;
     margin-bottom: 1.5rem;
+    color: var(--light-text);
     line-height: 1.8;
 }
 
 .about-content h3 {
     color: var(--primary-color);
-    margin-top: 2rem;
     margin-bottom: 1rem;
 }
 
 .directions-list {
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
 }
 
 .directions-list li {
-    padding: 1rem;
-    background-color: var(--light-bg);
-    border-radius: 5px;
-    border-left: 4px solid var(--success-color);
+    padding: 0.75rem 0;
+    color: var(--dark-text);
+    border-bottom: 1px solid #e2e8f0;
+    transition: transform 0.3s;
 }
 
-/* Footer */
+.directions-list li:last-child {
+    border-bottom: none;
+}
+
+.directions-list li:hover {
+    transform: translateX(10px);
+    color: var(--secondary-color);
+}
+
+/* Нижняя часть */
 footer {
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
     text-align: center;
     padding: 2rem 0;
-    margin-top: 4rem;
+    margin-top: 3rem;
 }
 
-/* Responsive */
+/* Адаптивность */
 @media (max-width: 768px) {
     .nav-links {
         gap: 1rem;
@@ -453,22 +498,51 @@ footer {
     }
 
     .hero {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        padding: 2rem;
     }
 
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
     }
 
     .courses-grid {
         grid-template-columns: 1fr;
     }
 
+    .hero-image {
+        order: -1;
+    }
+
     .stats {
         grid-template-columns: 1fr;
     }
+}
 
-    .section h2 {
-        font-size: 1.8rem;
+@media (max-width: 480px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .navbar .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero {
+        padding: 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .section {
+        padding: 1.5rem 0;
     }
 }
